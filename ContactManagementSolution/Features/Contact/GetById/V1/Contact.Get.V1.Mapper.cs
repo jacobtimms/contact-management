@@ -1,10 +1,11 @@
-﻿using FastEndpoints;
+﻿namespace ContactManagementSolution.Features.Contact.GetById.V1;
 
-namespace ContactManagementSolution.Features.Contact.GetById.V1;
+using Entities;
+using FastEndpoints;
 
-public sealed class Mapper : Mapper<Request, Response, Entities.Contact>
+public sealed class Mapper : Mapper<Request, Response, Contact>
 {
-    public override Response FromEntity(Entities.Contact e)
+    public override Response FromEntity(Contact e)
     {
         return new Response
         {
@@ -15,7 +16,7 @@ public sealed class Mapper : Mapper<Request, Response, Entities.Contact>
         };
     }
 
-    public override Task<Response> FromEntityAsync(Entities.Contact e, CancellationToken ct = default)
+    public override Task<Response> FromEntityAsync(Contact e, CancellationToken ct = default)
     {
         return Task.FromResult(FromEntity(e));
     }

@@ -1,4 +1,9 @@
-﻿namespace ContactManagementSolution.Features.Contact.Get.V1;
+﻿namespace ContactManagementSolution.Features.Fund.ListContacts.V1;
+
+public sealed record Request
+{
+    public Guid Id { get; init; }
+}
 
 public sealed record Response
 {
@@ -9,6 +14,4 @@ public sealed record ContactData
 {
     public Guid Id { get; set; }
     public string Name { get; set; }
-    public string? Email { get; set; }
-    public string? PhoneNumber { get; set; }
 }

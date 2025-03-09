@@ -8,7 +8,7 @@ public sealed class Mapper : ResponseMapper<Response, IEnumerable<Entities.Fund>
     {
         return new Response
         {
-            Funds = e.Select(record => new FundInfo
+            Funds = e.Select(record => new FundData
             {
                 Id = record.Id,
                 Name = record.Name

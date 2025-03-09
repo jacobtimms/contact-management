@@ -1,9 +1,9 @@
-﻿namespace ContactManagementSolution.Features.Contact.Get.V1;
+﻿namespace ContactManagementSolution.Features.Fund.ListContacts.V1;
 
 using Entities;
 using FastEndpoints;
 
-public sealed class Mapper : ResponseMapper<Response, IEnumerable<Contact>>
+public sealed class Mapper : Mapper<Request, Response, IEnumerable<Contact>>
 {
     public override Response FromEntity(IEnumerable<Contact> e)
     {
@@ -12,9 +12,7 @@ public sealed class Mapper : ResponseMapper<Response, IEnumerable<Contact>>
             Contacts = e.Select(record => new ContactData
             {
                 Id = record.Id,
-                Name = record.Name,
-                Email = record.Email,
-                PhoneNumber = record.PhoneNumber
+                Name = record.Name
             })
         };
     }
