@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "gO7oe0fevGJHU0aRXxyJvF8wgPYUar33mlrVYrYi4ow=",
+  "Hash": "kCA+w/9JveHudH03SeGKpuecpuhQxOTuqWlz08rsxlc=",
   "Source": "ContactManagementSolution",
   "BasePath": "_content/ContactManagementSolution",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

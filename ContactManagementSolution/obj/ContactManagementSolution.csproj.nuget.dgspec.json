@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "A:\\Repos\\ContactManagementSolution\\ContactManagementSolution\\ContactManagementSolution.csproj": {}
+    "C:\\Users\\JacobTimms\\RiderProjects\\contact-management\\ContactManagementSolution\\ContactManagementSolution.csproj": {}
   },
   "projects": {
-    "A:\\Repos\\ContactManagementSolution\\ContactManagementSolution\\ContactManagementSolution.csproj": {
+    "C:\\Users\\JacobTimms\\RiderProjects\\contact-management\\ContactManagementSolution\\ContactManagementSolution.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\Repos\\ContactManagementSolution\\ContactManagementSolution\\ContactManagementSolution.csproj",
+        "projectUniqueName": "C:\\Users\\JacobTimms\\RiderProjects\\contact-management\\ContactManagementSolution\\ContactManagementSolution.csproj",
         "projectName": "ContactManagementSolution",
-        "projectPath": "A:\\Repos\\ContactManagementSolution\\ContactManagementSolution\\ContactManagementSolution.csproj",
-        "packagesPath": "C:\\Users\\Jacob\\.nuget\\packages\\",
-        "outputPath": "A:\\Repos\\ContactManagementSolution\\ContactManagementSolution\\obj\\",
+        "projectPath": "C:\\Users\\JacobTimms\\RiderProjects\\contact-management\\ContactManagementSolution\\ContactManagementSolution.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\JacobTimms\\RiderProjects\\contact-management\\ContactManagementSolution\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Jacob\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,6 +38,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -47,6 +56,10 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.13, )"
+            },
+            "Microsoft.AspNetCore.SystemWebAdapters.CoreServices": {
+              "target": "Package",
+              "version": "[2.0.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -90,7 +103,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

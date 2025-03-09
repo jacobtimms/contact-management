@@ -1,4 +1,6 @@
-﻿namespace ContactManagementSolution.Extensions;
+﻿using ContactManagementSolution.Features.Contact;
+
+namespace ContactManagementSolution.Extensions;
 
 using Data;
 using Features.Fund;
@@ -11,8 +13,10 @@ public static class DependencyInjectionExtensions
         services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase("Main"));
         
         services.AddDbContext<IFundDbContext, ApplicationDbContext>();
+        services.AddDbContext<IContactDbContext, ApplicationDbContext>();
         
         services.AddScoped<FundService>();
+        services.AddScoped<ContactService>();
     }
     
     private static void AddDbContext<TInterface, TImplementation>(this IServiceCollection services)

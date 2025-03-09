@@ -1,7 +1,6 @@
-﻿using ContactManagementSolution.Data;
-using Microsoft.EntityFrameworkCore;
+﻿namespace ContactManagementSolution.Features.Fund;
 
-namespace ContactManagementSolution.Features.Fund;
+using Microsoft.EntityFrameworkCore;
 
 public class FundService(IFundDbContext context)
 {
@@ -14,4 +13,5 @@ public class FundService(IFundDbContext context)
 public interface IFundDbContext
 {
     DbSet<Entities.Fund> Funds { get; set; }
+    DbSet<Entities.Contact> Contacts { get; set; }
 }

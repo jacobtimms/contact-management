@@ -1,10 +1,9 @@
-using ContactManagementSolution.Data;
 using ContactManagementSolution.Extensions;
 using FastEndpoints;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddSystemWebAdapters();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddFastEndpoints();
@@ -16,6 +15,7 @@ app.UseSwagger();
 app.UseSwaggerUI();
 app.SeedDatabase();
 app.UseHttpsRedirection();
+app.UseSystemWebAdapters();
 app.UseFastEndpoints(c =>
 {
     c.Versioning.Prefix = "v";
@@ -26,13 +26,5 @@ app.UseFastEndpoints(c =>
         ep.AllowAnonymous();
     };
 });
-
-app.MapGet("/fundTest", async (ApplicationDbContext dbContext) =>
-    {
-        var funds = await dbContext.Funds.ToListAsync();
-        return Results.Ok(funds);
-    })
-    .WithName("GetFunds")
-    .WithOpenApi();
 
 app.Run();
