@@ -2,7 +2,7 @@
 
 using FastEndpoints;
 
-public sealed class Endpoint(ContactService service) : Endpoint<Request, Response, Mapper>
+public sealed class Endpoint(IContactService service) : Endpoint<Request, Response, Mapper>
 {
     public override void Configure()
     {

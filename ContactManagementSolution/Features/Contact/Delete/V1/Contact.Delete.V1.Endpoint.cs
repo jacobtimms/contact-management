@@ -2,7 +2,7 @@
 
 namespace ContactManagementSolution.Features.Contact.Delete.V1;
 
-public sealed class Endpoint(ContactService service) : Endpoint<Request, Response>
+public sealed class Endpoint(IContactService service) : Endpoint<Request, Response>
 {
     public override void Configure()
     {

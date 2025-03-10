@@ -3,7 +3,7 @@
 using Entities;
 using Microsoft.EntityFrameworkCore;
 
-public class FundService(IFundDbContext context)
+public class FundService(IFundDbContext context) : IFundService
 {
     public async Task<bool> FundExistsAsync(Guid id, CancellationToken ct = default)
     {
@@ -58,4 +58,16 @@ public interface IFundDbContext
     
     Task<TEntity> CreateEntityAsync<TEntity>(TEntity entity, CancellationToken ct = default) where TEntity : class;
     Task DeleteEntityAsync<TEntity>(TEntity entity, CancellationToken ct = default) where TEntity : class;
+}
+
+public interface IFundService
+{
+    Task<bool> FundExistsAsync(Guid id, CancellationToken ct = default);
+    Task<bool> ContactExistsAsync(Guid id, CancellationToken ct = default);
+    Task<bool> FundContactExistsAsync(Guid fundId, Guid contactId, CancellationToken ct = default);
+    Task<IEnumerable<Fund>> GetAllFundsAsync(CancellationToken ct = default);
+    Task<FundContact?> GetFundContactAsync(Guid fundId, Guid contactId, CancellationToken ct = default);
+    Task<IEnumerable<Contact>> ListFundContactsAsync(Guid id, CancellationToken ct = default);
+    Task AddFundContactAsync(Guid fundId, Guid contactId, CancellationToken ct = default);
+    Task RemoveFundContactAsync(FundContact fundContact, CancellationToken ct = default);
 }

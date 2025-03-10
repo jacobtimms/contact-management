@@ -1,12 +1,12 @@
-﻿namespace ContactManagementSolution.Features.Contact.Update.V1;
+﻿namespace ContactManagementSolution.Features.Contact.GetById.V1;
 
 using FastEndpoints;
 
-public sealed class Endpoint(IContactService service) : EndpointWithMapper<Request, Mapper>
+public sealed class Endpoint(IContactService service) : Endpoint<Request, Response, Mapper>
 {
     public override void Configure()
     {
-        Patch("/contact/{id}");
+        Get("/contact/{id}");
         Version(1);
     }
     
@@ -18,10 +18,7 @@ public sealed class Endpoint(IContactService service) : EndpointWithMapper<Reque
             await SendNotFoundAsync(ct);
             return;
         }
-        
-        Mapper.ToEntity(req, record);
-        await service.UpdateContactAsync(record, ct);
 
-        await SendNoContentAsync(ct);
+        await SendMappedAsync(record, ct: ct);
     }
 }

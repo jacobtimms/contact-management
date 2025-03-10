@@ -2,7 +2,7 @@
 
 using FastEndpoints;
 
-public sealed class Endpoint(FundService service) : Endpoint<Request, Response, Mapper>
+public sealed class Endpoint(IFundService service) : Endpoint<Request, Response, Mapper>
 {
     public override void Configure()
     {

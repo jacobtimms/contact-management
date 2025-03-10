@@ -1,8 +1,8 @@
-﻿using ContactManagementSolution.Features.Contact;
-
+﻿
 namespace ContactManagementSolution.Extensions;
 
 using Data;
+using Features.Contact;
 using Features.Fund;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,8 +15,8 @@ public static class DependencyInjectionExtensions
         services.AddDbContext<IFundDbContext, ApplicationDbContext>();
         services.AddDbContext<IContactDbContext, ApplicationDbContext>();
         
-        services.AddScoped<FundService>();
-        services.AddScoped<ContactService>();
+        services.AddScoped<IFundService, FundService>();
+        services.AddScoped<IContactService, ContactService>();
     }
     
     private static void AddDbContext<TInterface, TImplementation>(this IServiceCollection services)

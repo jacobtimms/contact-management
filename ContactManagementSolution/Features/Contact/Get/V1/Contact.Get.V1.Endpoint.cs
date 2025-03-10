@@ -1,9 +1,8 @@
 ﻿namespace ContactManagementSolution.Features.Contact.Get.V1;
 
-using Fund;
 using FastEndpoints;
 
-public sealed class Endpoint(ContactService service) : EndpointWithoutRequest<Response, Mapper>
+public sealed class Endpoint(IContactService service) : EndpointWithoutRequest<Response, Mapper>
 {
     public override void Configure()
     {

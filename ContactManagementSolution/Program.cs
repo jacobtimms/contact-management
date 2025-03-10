@@ -16,7 +16,8 @@ app.UseSwaggerUI();
 app.SeedDatabase();
 app.UseHttpsRedirection();
 app.UseSystemWebAdapters();
-app.UseFastEndpoints(c =>
+app.UseDefaultExceptionHandler(useGenericReason: true)
+    .UseFastEndpoints(c =>
 {
     c.Versioning.Prefix = "v";
     c.Versioning.PrependToRoute = true;

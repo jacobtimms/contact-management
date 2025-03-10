@@ -3,7 +3,7 @@
 using Entities;
 using Microsoft.EntityFrameworkCore;
 
-public class ContactService(IContactDbContext context)
+public class ContactService(IContactDbContext context) : IContactService
 {
     public async Task<IEnumerable<Contact>> GetAllContactsAsync(CancellationToken ct = default)
     {
@@ -37,4 +37,13 @@ public interface IContactDbContext
     Task<TEntity> CreateEntityAsync<TEntity>(TEntity entity, CancellationToken ct = default) where TEntity : class;
     Task UpdateEntityAsync<TEntity>(TEntity entity, CancellationToken ct = default) where TEntity : class;
     Task DeleteEntityAsync<TEntity>(TEntity entity, CancellationToken ct = default) where TEntity : class;
+}
+
+public interface IContactService
+{
+    Task<IEnumerable<Contact>> GetAllContactsAsync(CancellationToken ct = default);
+    Task<Contact?> GetContactByIdAsync(Guid id, CancellationToken ct = default);
+    Task<Contact> CreateContactAsync(Contact contact, CancellationToken ct = default);
+    Task UpdateContactAsync(Contact contact, CancellationToken ct = default);
+    Task DeleteContactAsync(Contact contact, CancellationToken ct = default);
 }
