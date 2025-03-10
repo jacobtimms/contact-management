@@ -21,10 +21,10 @@ public class Tests()
         
         var ep = Factory.Create<Endpoint>(fakeContactService);
         
-        var request = new Request{ Id = TestData.Fund.Id };
+        var req = new Request{ Id = TestData.Fund.Id };
 
         // Act
-        await ep.HandleAsync(request, default);
+        await ep.HandleAsync(req, default);
         var rsp = ep.Response;
 
         // Assert
@@ -44,10 +44,10 @@ public class Tests()
 
         var ep = Factory.Create<Endpoint>(fakeContactService);
 
-        var request = new Request { Id = TestData.Fund.Id };
+        var req = new Request { Id = TestData.Fund.Id };
 
         // Act
-        await ep.HandleAsync(request, default);
+        await ep.HandleAsync(req, default);
 
         // Assert
         ep.HttpContext.Response.StatusCode.ShouldBe((int)HttpStatusCode.NotFound);

@@ -1,8 +1,8 @@
-﻿using FastEndpoints;
+﻿namespace ContactManagementSolution.Features.Contact.Delete.V1;
 
-namespace ContactManagementSolution.Features.Contact.Delete.V1;
+using FastEndpoints;
 
-public sealed class Endpoint(IContactService service) : Endpoint<Request, Response>
+public sealed class Endpoint(IContactService service) : Endpoint<Request>
 {
     public override void Configure()
     {
@@ -12,14 +12,19 @@ public sealed class Endpoint(IContactService service) : Endpoint<Request, Respon
     
     public override async Task HandleAsync(Request req, CancellationToken ct)
     {
-        var record = await service.GetContactByIdAsync(req.Id, ct);
-        if (record == null)
+        var data = await service.GetContactByIdAsync(req.Id, ct);
+        if (data == null)
         {
             await SendNotFoundAsync(ct);
             return;
         }
+        
+        if (await service.ContactAssignedToAnyFund(req.Id, ct))
+            AddError("Contact cannot be deleted whilst assigned to a fund");
+        
+        ThrowIfAnyErrors();
 
-        await service.DeleteContactAsync(record, ct);
+        await service.DeleteContactAsync(data, ct);
         
         await SendNoContentAsync(ct);
     }

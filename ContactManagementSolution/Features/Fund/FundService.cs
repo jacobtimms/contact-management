@@ -50,6 +50,8 @@ public class FundService(IFundDbContext context) : IFundService
     }
 }
 
+#region Interfaces
+
 public interface IFundDbContext
 {
     DbSet<Fund> Funds { get; set; }
@@ -71,3 +73,5 @@ public interface IFundService
     Task AddFundContactAsync(Guid fundId, Guid contactId, CancellationToken ct = default);
     Task RemoveFundContactAsync(FundContact fundContact, CancellationToken ct = default);
 }
+
+#endregion Interfaces

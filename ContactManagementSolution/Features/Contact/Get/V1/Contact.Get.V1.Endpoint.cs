@@ -12,7 +12,7 @@ public sealed class Endpoint(IContactService service) : EndpointWithoutRequest<R
     
     public override async Task HandleAsync(CancellationToken ct)
     {
-        var records = await service.GetAllContactsAsync(ct);
-        await SendMappedAsync(records, ct: ct);
+        var data = await service.GetAllContactsAsync(ct);
+        await SendMappedAsync(data, ct: ct);
     }
 }

@@ -12,13 +12,13 @@ public sealed class Endpoint(IContactService service) : Endpoint<Request, Respon
     
     public override async Task HandleAsync(Request req, CancellationToken ct)
     {
-        var record = await service.GetContactByIdAsync(req.Id, ct);
-        if (record == null)
+        var data = await service.GetContactByIdAsync(req.Id, ct);
+        if (data == null)
         {
             await SendNotFoundAsync(ct);
             return;
         }
 
-        await SendMappedAsync(record, ct: ct);
+        await SendMappedAsync(data, ct: ct);
     }
 }

@@ -18,10 +18,11 @@ public class Tests
             .Returns(Task.CompletedTask);
 
         var ep = Factory.Create<Endpoint>(fakeContactService);
-        var request = new Request { Id = TestData.Contact.Id };
+        
+        var req = new Request { Id = TestData.Contact.Id };
 
         // Act
-        await ep.HandleAsync(request, default);
+        await ep.HandleAsync(req, default);
 
         // Assert
         ep.HttpContext.Response.StatusCode.ShouldBe((int)HttpStatusCode.NoContent);
@@ -38,10 +39,11 @@ public class Tests
             .Returns(Task.CompletedTask);
 
         var ep = Factory.Create<Endpoint>(fakeContactService);
-        var request = new Request { Id = TestData.Contact.Id };
+        
+        var req = new Request { Id = TestData.Contact.Id };
 
         // Act
-        await ep.HandleAsync(request, default);
+        await ep.HandleAsync(req, default);
 
         // Assert
         ep.HttpContext.Response.StatusCode.ShouldBe((int)HttpStatusCode.NotFound);

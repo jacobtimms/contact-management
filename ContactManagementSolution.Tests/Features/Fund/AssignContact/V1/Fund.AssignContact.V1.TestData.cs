@@ -11,9 +11,4 @@ public class TestData
     {
         Id = Guid.NewGuid(), Name = "John Doe", Email = "john.doe@example.com", PhoneNumber = "123-456-7890"
     };
-
-    public static readonly Entities.FundContact FundContact = new()
-    {
-        FundId = Fund.Id, ContactId = Contact.Id
-    };
 }

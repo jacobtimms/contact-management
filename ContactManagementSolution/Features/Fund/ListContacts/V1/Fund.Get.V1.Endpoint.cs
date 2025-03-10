@@ -19,6 +19,7 @@ public sealed class Endpoint(IFundService service) : Endpoint<Request, Response,
         }
         
         var data = await service.ListFundContactsAsync(req.Id, ct);
+        
         await SendMappedAsync(data, ct: ct);
     }
 }

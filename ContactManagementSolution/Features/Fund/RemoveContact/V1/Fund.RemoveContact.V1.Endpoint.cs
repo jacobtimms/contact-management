@@ -20,14 +20,14 @@ public sealed class Endpoint(IFundService service) : Endpoint<Request>
         
         ThrowIfAnyErrors();
 
-        var entity = await service.GetFundContactAsync(req.Id, req.ContactId, ct);
-        if (entity == null)
+        var data = await service.GetFundContactAsync(req.Id, req.ContactId, ct);
+        if (data == null)
         {
             await SendNotFoundAsync(ct);
             return;
         }
         
-        await service.RemoveFundContactAsync(entity, ct);
+        await service.RemoveFundContactAsync(data, ct);
 
         await SendNoContentAsync(ct);
     }

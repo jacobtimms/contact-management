@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 public static class DependencyInjectionExtensions
 {
-    public static void AddDependencies(this IServiceCollection services)
+    public static void RegisterDependencies(this IServiceCollection services)
     {
         services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase("Main"));
         

@@ -12,15 +12,15 @@ public sealed class Endpoint(IContactService service) : EndpointWithMapper<Reque
     
     public override async Task HandleAsync(Request req, CancellationToken ct)
     {
-        var record = await service.GetContactByIdAsync(req.Id, ct);
-        if (record == null)
+        var data = await service.GetContactByIdAsync(req.Id, ct);
+        if (data == null)
         {
             await SendNotFoundAsync(ct);
             return;
         }
         
-        Mapper.ToEntity(req, record);
-        await service.UpdateContactAsync(record, ct);
+        Mapper.ToEntity(req, data);
+        await service.UpdateContactAsync(data, ct);
 
         await SendNoContentAsync(ct);
     }

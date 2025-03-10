@@ -1,13 +1,12 @@
-using System.Net;
-using ContactManagementSolution.Entities;
-
 namespace ContactManagementSolution.Tests.Features.Fund.RemoveContact.V1;
 
+using Entities;
 using ContactManagementSolution.Features.Fund;
 using ContactManagementSolution.Features.Fund.RemoveContact.V1;
 using FakeItEasy;
 using FastEndpoints;
 using Shouldly;
+using System.Net;
 
 public class Tests()
 {
@@ -24,11 +23,11 @@ public class Tests()
             .Returns(new FundContact());
 
         var ep = Factory.Create<Endpoint>(fakeFundService);
-        var request = new Request { Id = TestData.Fund.Id, ContactId = TestData.Contact.Id };
+        
+        var req = new Request { Id = TestData.Fund.Id, ContactId = TestData.Contact.Id };
 
         // Act
-        await ep.HandleAsync(request, default);
-        var rsp = ep.Response;
+        await ep.HandleAsync(req, default);
 
         // Assert
         ep.HttpContext.Response.StatusCode.ShouldBe((int)HttpStatusCode.NoContent);
@@ -47,11 +46,11 @@ public class Tests()
             .Returns<FundContact?>(null);
 
         var ep = Factory.Create<Endpoint>(fakeFundService);
-        var request = new Request { Id = TestData.Fund.Id, ContactId = TestData.Contact.Id };
+        
+        var req = new Request { Id = TestData.Fund.Id, ContactId = TestData.Contact.Id };
 
         // Act
-        await ep.HandleAsync(request, default);
-        var rsp = ep.Response;
+        await ep.HandleAsync(req, default);
 
         // Assert
         ep.HttpContext.Response.StatusCode.ShouldBe((int)HttpStatusCode.NotFound);

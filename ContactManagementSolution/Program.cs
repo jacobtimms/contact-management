@@ -3,21 +3,15 @@ using FastEndpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSystemWebAdapters();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 builder.Services.AddFastEndpoints();
-builder.Services.AddDependencies();
+builder.Services.RegisterDependencies();
 
 var app = builder.Build();
 
-app.UseSwagger();
-app.UseSwaggerUI();
 app.SeedDatabase();
 app.UseHttpsRedirection();
-app.UseSystemWebAdapters();
-app.UseDefaultExceptionHandler(useGenericReason: true)
-    .UseFastEndpoints(c =>
+app.UseDefaultExceptionHandler(useGenericReason: true);
+app.UseFastEndpoints(c =>
 {
     c.Versioning.Prefix = "v";
     c.Versioning.PrependToRoute = true;

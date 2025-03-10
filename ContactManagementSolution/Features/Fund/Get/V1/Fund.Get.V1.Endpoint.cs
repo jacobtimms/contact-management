@@ -12,7 +12,7 @@ public sealed class Endpoint(IFundService service) : EndpointWithoutRequest<Resp
     
     public override async Task HandleAsync(CancellationToken ct)
     {
-        var records = await service.GetAllFundsAsync(ct);
-        await SendMappedAsync(records, ct: ct);
+        var data = await service.GetAllFundsAsync(ct);
+        await SendMappedAsync(data, ct: ct);
     }
 }

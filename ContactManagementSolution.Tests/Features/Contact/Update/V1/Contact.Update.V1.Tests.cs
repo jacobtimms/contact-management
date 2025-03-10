@@ -21,10 +21,10 @@ public class Tests()
         
         var ep = Factory.Create<Endpoint>(fakeContactService);
         
-        var request = new Request { Id = TestData.Contact.Id, Email = "NewEmail@test.com" };
+        var req = new Request { Id = TestData.Contact.Id, Email = "NewEmail@test.com" };
 
         // Act
-        await ep.HandleAsync(request, default);
+        await ep.HandleAsync(req, default);
 
         // Assert
         ep.HttpContext.Response.StatusCode.ShouldBe((int)HttpStatusCode.NoContent);

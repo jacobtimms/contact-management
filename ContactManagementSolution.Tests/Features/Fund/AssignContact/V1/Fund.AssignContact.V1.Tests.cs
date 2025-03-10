@@ -22,10 +22,11 @@ public class Tests()
             .Returns(false);
 
         var ep = Factory.Create<Endpoint>(fakeFundService);
-        var request = new Request { Id = TestData.Fund.Id, ContactId = TestData.Contact.Id };
+        
+        var req = new Request { Id = TestData.Fund.Id, ContactId = TestData.Contact.Id };
 
         // Act
-        await ep.HandleAsync(request, default);
+        await ep.HandleAsync(req, default);
 
         // Assert
         ep.HttpContext.Response.StatusCode.ShouldBe((int)HttpStatusCode.NoContent);
@@ -42,10 +43,11 @@ public class Tests()
             .Returns(false);
 
         var ep = Factory.Create<Endpoint>(fakeFundService);
-        var request = new Request { Id = TestData.Fund.Id, ContactId = TestData.Contact.Id };
+        
+        var req = new Request { Id = TestData.Fund.Id, ContactId = TestData.Contact.Id };
 
         // Act
-        await Should.ThrowAsync<ValidationFailureException>(async () => await ep.HandleAsync(request, default));
+        await Should.ThrowAsync<ValidationFailureException>(async () => await ep.HandleAsync(req, default));
 
         // Assert
         ep.ValidationFailures.ShouldContain(f => f.ErrorMessage == "Contact not found");
@@ -64,10 +66,11 @@ public class Tests()
             .Returns(true);
 
         var ep = Factory.Create<Endpoint>(fakeFundService);
-        var request = new Request { Id = TestData.Fund.Id, ContactId = TestData.Contact.Id };
+        
+        var req = new Request { Id = TestData.Fund.Id, ContactId = TestData.Contact.Id };
 
         // Act
-        await Should.ThrowAsync<ValidationFailureException>(async () => await ep.HandleAsync(request, default));
+        await Should.ThrowAsync<ValidationFailureException>(async () => await ep.HandleAsync(req, default));
 
         // Assert
         ep.ValidationFailures.ShouldContain(f => f.ErrorMessage == "Contact already assigned to the fund");
